@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Posts Page</title>
+{% endblock %}
+
+{% block body %}
+        <br>        
+        <div>
+            <h1 style='display: inline'>Main Post Page</h1>
+            <a style='display: inline' class='btn btn-success float-right'
+             href='/posts/new'>New Post</a>
+        </div>
+        <br>
+        <hr>
+        {% for post in posts %}
+        <h2>{{post.title}}</h2>
+        {% if post.posted_by %}
+        <small>Written By {{post.posted_by}} on {{post.posted_on}}</small>
+        {% else %}
+        <small>Written by Anonymous on {{post.posted_on}}</small>
+        {% endif %}
+        <p style='white-space: pre-wrap'>{{post.content}}</p>
+        <br>
+        <a href="/posts/delete/{{post.id}}">
+            <!-- <img src="icons/delete_icon.jpg" height="30px" width="30px"> -->
+            <button>delete</button> 
+        </a>
+        <a href="/posts/edit/{{post.id}}">
+            <!-- <img src="icons/edit_icon.png" height="30px" width="30px"> -->
+            <button>edit</button>
+        </a>
+        <hr>
+        {% endfor %}
+{% endblock %}
