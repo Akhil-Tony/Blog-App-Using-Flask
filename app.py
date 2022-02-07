@@ -17,8 +17,8 @@ class blog_post(db.Model):
 
     def __repr__(self):
         return self.title
-db.create_all()
-db.session.commit()
+# db.create_all()
+# db.session.commit()
 
 @app.route('/')
 def welcome():
