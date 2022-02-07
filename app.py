@@ -12,7 +12,7 @@ class blog_post(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(100),nullable=False)
     content = db.Column(db.Text,nullable=False)
-    posted_by = db.Column(db.String(20),nullable=False) #,default='N/A'
+    posted_by = db.Column(db.String(20),nullable=False,default='N/A')
     posted_on = db.Column(db.DateTime,nullable=False,default=datetime.utcnow())
 
     def __repr__(self):
@@ -51,7 +51,7 @@ def posts():
         db.session.commit()
         return redirect('/posts')
     else:
-        all_posts = blog_post.query.order_by(blog_post.posted_on).all()
+        all_posts = blog_post.query.order_by(blog_post.posted_on.desc()).all() #<-- .desc() is added
         return render_template('posts.html',posts=all_posts)
 
 @app.route('/posts/edit/<int:id>',methods=['GET','POST'])
@@ -74,4 +74,4 @@ def delete(id):
     return redirect('/posts')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
