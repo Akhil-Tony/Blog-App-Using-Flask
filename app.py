@@ -3,9 +3,18 @@ from flask import Flask, redirect, request
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
+import re
+
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+# rest of connection code using the connection string `uri`
+
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kaitdncwkcwzfx:a3ca8d3f6d1f4496a4a96237fa21eef6bcf095499c9ecd2a58b2b872757cf108@ec2-44-198-24-0.compute-1.amazonaws.com:5432/ddaii0lkvku411'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kaitdncwkcwzfx:a3ca8d3f6d1f4496a4a96237fa21eef6bcf095499c9ecd2a58b2b872757cf108@ec2-44-198-24-0.compute-1.amazonaws.com:5432/ddaii0lkvku411'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 db = SQLAlchemy(app)
 
 class blog_post(db.Model):
