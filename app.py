@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kaitdncwkcwzfx:a3ca8d3f6d1f4496a4a96237fa21eef6bcf095499c9ecd2a58b2b872757cf108@ec2-44-198-24-0.compute-1.amazonaws.com:5432/ddaii0lkvku411'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kaitdncwkcwzfx:a3ca8d3f6d1f4496a4a96237fa21eef6bcf095499c9ecd2a58b2b872757cf108@ec2-44-198-24-0.compute-1.amazonaws.com:5432/ddaii0lkvku411'
 db = SQLAlchemy(app)
 
 class blog_post(db.Model):
