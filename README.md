@@ -3,8 +3,7 @@
   <ul>
   <li>Flask Web Framework</li>
   <li>PostreSQL DataBase</li>
+  <li>Heroku Cloud</li>
 </ul>
-A sample blogging application where anyone can create a blog post and see it in the home page
-this project is hosted in the heroku cloud
-to see live
+A sample blogging application where anyone can read or post blog posts. To see live
 <a href="https://quikblog.herokuapp.com/posts">click here</a>
